@@ -1,0 +1,19 @@
+#!/bin/bash
+# -*- ENCODING: UTF-8 -*-
+
+#Pull all branchs to the current branch
+
+source gitutil_common.sh
+
+check_git_dir
+
+#Update all branchs from origin
+echo "Updating all branchs from remote..."
+git remote update --prune
+
+for brname in `git branch -r  | grep -v HEAD `; do
+    echo "Pulling from ${brname/\// }..."
+    git pull ${brname/\// } 
+done
+
+echo "Pull all finished"
