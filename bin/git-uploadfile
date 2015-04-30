@@ -1,0 +1,56 @@
+#!/bin/bash
+# -*- ENCODING: UTF-8 -*-
+
+#Generate a tar file with all files changed between branchs
+
+#Stops script if any error
+set -e
+#Unique identifier
+NOW=$(date +%Y%m%d-%M)
+#Current directory
+ARCHIVE_NAME=$(basename $(pwd))
+#Current path
+CURRENT_PATH=`pwd`
+#Destination path 
+DEST_PATH=${2:-"../"}
+DEST_PATH=`realpath $DEST_PATH`
+DEST_PATH="$DEST_PATH/"
+#Check if is a git directory
+if [ -d .git ]; then
+	#Update all branchs from origin
+	echo "Updating all branchs from remote..."
+	git remote update
+	#Current branch
+	BRANCH=$(git name-rev HEAD 2> /dev/null | awk "{ print \$2 }")
+	DEST_BRANCH=${1:-"master"}
+	#Diff command
+	GIT_DIFF_COMMAND="$DEST_BRANCH..$BRANCH"
+	echo "Building changes archive from $BRANCH to $DEST_BRANCH..."
+	FILE_PREFIX="$DEST_PATH$ARCHIVE_NAME-$DEST_BRANCH-$BRANCH"
+	#Check that the destination file not exists
+	DEST="$FILE_PREFIX-patch_$NOW.tar.gz";
+	DEST_LOG="$FILE_PREFIX-files_$NOW.txt";
+	COUNT=0
+	#While exists increase the counter file
+	while [ -e $DEST ]; do
+	  let COUNT=COUNT+1	
+	  DEST="$FILE_PREFIX-patch_$NOW.$COUNT.tar.gz";
+	  DEST_LOG="$FILE_PREFIX-files_$NOW.$COUNT.txt";
+	done
+	#Check if the branches has changes
+	DIFF=`git diff --name-status "$GIT_DIFF_COMMAND"`
+	if [ -z "${DIFF##*( )}" ]; then
+	    echo "No changes detected between branches"
+	    exit -1
+	fi
+	#Make the diff text file
+	git diff --name-status "$GIT_DIFF_COMMAND" > "$DEST_LOG"
+	#Make the changes archive. Ignore the D lines, they are deleted and not exists
+	tar -czf $DEST `git diff --name-status "$GIT_DIFF_COMMAND" |  awk '\$1 !~ /D/ {\$1 = "";sub(/^[ \t\r\n]+/, "", \$0); print \$0 }'`	
+	FULL_PATH=`realpath $DEST`
+        echo "Changes archive created: $FULL_PATH"
+	exit 0
+else
+	echo "Can't find git in the current path: $CURRENT_PATH"
+	exit -1
+fi
