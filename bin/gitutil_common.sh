@@ -6,7 +6,7 @@ set -e
 
 CURRENT_PATH=`pwd`
 
-
+#Check if a .git folder exits
 function check_git_dir(){
 	if [ ! -d .git ]; then
             echo "Can't find git in the current path: $CURRENT_PATH"
