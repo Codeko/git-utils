@@ -1,24 +1,64 @@
 #!/bin/bash
 # -*- ENCODING: UTF-8 -*-
 
-#Pull all branchs to the current branch
+#Generate a tar file with all files changed between branchs
 
-#Load commons vars and functions
 source gitutil_common.sh
 
-#Check if we are in a git repository
+#Unique identifier
+NOW=$(date +%Y%m%d-%M)
+#Current directory
+ARCHIVE_NAME=$(basename $(pwd))
+
+#Commit ID 
+COMMIT_ID=${1:-""}
+
+#Destination path 
+DEST_PATH=${2:-"../"}
+DEST_PATH=`realpath $DEST_PATH`
+DEST_PATH="$DEST_PATH/"
+#Check if is a git directory
 check_git_dir
 
-#Update all branchs from origin
-echo "Updating all branchs from remote..."
-git remote update --prune
+#Generate the destination file name
+NOW=$COMMIT_ID
+if [ -z "$COMMIT_ID" ]; then
+    NOW=$(date +%Y%m%d-%M) 
+    echo "Building changes archive for uncommited changes..."	
+else
+    echo "Building changes archive for commit $COMMIT_ID..."	
+fi
 
-#Pull from all remote branches
-for brname in `git branch -r  | grep -v HEAD `; do
-    echo "Pulling from ${brname/\// }..."
-    git pull ${brname/\// } 
+FILE_PREFIX="$DEST_PATH$ARCHIVE_NAME-$NOW"
+
+#Check that the destination file not exists
+DEST="$FILE_PREFIX-patch.tar.gz";
+DEST_LOG="$FILE_PREFIX-files.txt";
+COUNT=0
+#While exists increase the counter file
+while [ -e $DEST ]; do
+  let COUNT=COUNT+1	
+  DEST="$FILE_PREFIX-patch.$COUNT.tar.gz";
+  DEST_LOG="$FILE_PREFIX-files.$COUNT.txt";
 done
 
-echo "Pull all finished"
+if [ -z "$COMMIT_ID" ]
+    then
+        #Check if the branche has changes
+        DIFF=`git status -s`
+        if [ -z "${DIFF##*( )}" ]; then
+            echo "No changes detected between branches"
+            exit -1
+        fi
+        tar -cf $DEST `git status -s | awk '\$1 !~ /D/ {\$1 = "";sub(/^[ \t\r\n]+/, "", \$0); print \$0 }'`	
+        git status -s > $DEST_LOG
+    else
+        #Build archive for the commit id
+        tar -cf $DEST `git show --pretty="format:" --name-only $COMMIT_ID`	
+        git show --pretty="format:" --name-only $COMMIT_ID > $DEST_LOG	
+fi
 
+FULL_PATH=`realpath $DEST`
+echo "Changes archive created: $FULL_PATH"
 exit 0
+
