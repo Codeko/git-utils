@@ -18,8 +18,7 @@ DEST_PATH="$DEST_PATH/"
 check_git_dir
 
 #Update all branchs from origin
-echo "Updating all branchs from remote..."
-git remote update
+update_all_branchs
 #Current branch
 BRANCH=$(git name-rev HEAD 2> /dev/null | awk "{ print \$2 }")
 DEST_BRANCH=${1:-"master"}
