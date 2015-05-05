@@ -1,0 +1,17 @@
+#!/bin/bash
+# -*- ENCODING: UTF-8 -*-
+
+#Update all branch from their origin
+
+#Load commons vars and functions
+source gitutil_common.sh
+
+#Check if we are in a git repository
+check_git_dir
+
+#Update all branchs from origin
+update_all_branchs
+
+echo "Update all all finished"
+
+exit 0

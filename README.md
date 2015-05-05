@@ -34,6 +34,17 @@ Another file with the list of changes is also generated with the name:
 
 The command is usefull to gather all files needed to be uploaded to a remote server (production, development, etc) and upload it manually.
 
+### updateall
+#### Description
+Fast forward every branch to be updated from their remote
+
+#### Example
+
+    $> git updateall
+
+#### Use 
+This command is usefull to update the entire local repository from the remote repositories
+
 ### pullall
 #### Description
 Pull all remote branches to the current one.
