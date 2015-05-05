@@ -26,14 +26,14 @@ for brname in `git branch -r  | grep -v HEAD `; do
     for i in $BRANCHS_TO_PUSH; do
         if [ "$CBRANCH" == "$i" ]; then
             echo "Push to ${brname/\// }..."
+	    git checkout $CBRANCH
+	    git merge $BRANCH
             git push ${brname/\// } 
         fi
     done
 done
 
-#Update all branchs from origin after push
-echo "Updating all branchs from remote..."
-git remote update
+git checkout $BRANCH
 
 echo "Push all finished"
 
