@@ -34,18 +34,41 @@ Another file with the list of changes is also generated with the name:
 
 The command is usefull to gather all files needed to be uploaded to a remote server (production, development, etc) and upload it manually.
 
-### pall
+### pullall
 #### Description
 Pull all remote branches to the current one.
 
 #### Example
 
-    $> git pall
+    $> git pullall
 
 #### Use 
 This command is usefull when working with many developers in the same proyect with hight posibilities of collisions. A updated branch is very important in this cases.
 
 This command is usefull to update your branch before a deploy using the `diffarchive` command.
+
+### pushall
+#### Description
+Push current branch to designed branchs in all origins
+
+#### Parameters
+
+    git pushall [destination branch]
+`[destination branch]` is the branch to push from the current branch. `dev master` is used by default
+
+#### Example
+
+    $> git pushall
+
+Push the current branch to all origin's branchs with name `dev` or `master` (default values)
+
+
+    $> git pushall my_branch my_other_branch
+
+Push the current branch to all origin's branchs with name `my_branch` or `my_other_branch`
+
+#### Use 
+This command is usefull to push your changes to multiple origins or/and to multiple branches 
 
 ### changesarchive
 #### Description
@@ -69,5 +92,6 @@ Generate a file with all files changed in a commit
 
 #### Use 
 This command is usefull to get the current changed files or the files affected by a commit.
+
 
 

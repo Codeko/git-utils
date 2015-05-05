@@ -1,0 +1,40 @@
+#!/bin/bash
+# -*- ENCODING: UTF-8 -*-
+
+#Push the current branch to defined branchs
+
+#Load commons vars and functions
+source gitutil_common.sh
+
+#Check if we are in a git repository
+check_git_dir
+
+#Destination branches
+if [ $# -eq 0 ]; then
+    BRANCHS_TO_PUSH="dev master"
+else
+    BRANCHS_TO_PUSH="$*"
+fi
+
+#Current branch
+BRANCH=$(git name-rev HEAD 2> /dev/null | awk "{ print \$2 }")
+
+echo "Push to '$BRANCHS_TO_PUSH' from $BRANCH"
+#Push to designed branchs in all origins
+for brname in `git branch -r  | grep -v HEAD `; do
+    CBRANCH=`echo $brname | sed -e 's/.*\///g'`
+    for i in $BRANCHS_TO_PUSH; do
+        if [ "$CBRANCH" == "$i" ]; then
+            echo "Push to ${brname/\// }..."
+            git push ${brname/\// } 
+        fi
+    done
+done
+
+#Update all branchs from origin after push
+echo "Updating all branchs from remote..."
+git remote update
+
+echo "Push all finished"
+
+exit 0
