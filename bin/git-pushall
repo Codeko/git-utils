@@ -16,9 +16,6 @@ else
     BRANCHS_TO_PUSH="$*"
 fi
 
-#Current branch
-BRANCH=$(git name-rev HEAD 2> /dev/null | awk "{ print \$2 }")
-
 echo "Push to '$BRANCHS_TO_PUSH' from $BRANCH"
 #Push to designed branchs in all origins
 for brname in `git branch -r  | grep -v HEAD `; do

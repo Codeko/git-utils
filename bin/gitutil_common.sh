@@ -5,6 +5,8 @@
 set -e
 
 CURRENT_PATH=`pwd`
+#Current branch
+BRANCH=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
 
 #Check if a .git folder exits
 function check_git_dir(){
@@ -16,7 +18,6 @@ function check_git_dir(){
 
 
 function update_all_branchs(){
-    BRANCH=$(git name-rev HEAD 2> /dev/null | awk "{ print \$2 }")
     echo "Updating all branchs from remote..."
     git remote update --prune
 

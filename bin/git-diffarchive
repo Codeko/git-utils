@@ -19,8 +19,6 @@ check_git_dir
 
 #Update all branchs from origin
 update_all_branchs
-#Current branch
-BRANCH=$(git name-rev HEAD 2> /dev/null | awk "{ print \$2 }")
 DEST_BRANCH=${1:-"master"}
 #Diff command
 GIT_DIFF_COMMAND="$DEST_BRANCH..$BRANCH"
