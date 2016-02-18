@@ -7,6 +7,11 @@ If don't work do the following edit the .bashrc file and check it has the line:
 
     PATH=$PATH:$HOME/bin
 
+## Dependencies
+The scripts require the following packages:
+
+    realpath
+
 ## Available commands
 ### diffarchive
 
