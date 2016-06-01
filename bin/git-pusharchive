@@ -1,0 +1,49 @@
+#!/bin/bash
+# -*- ENCODING: UTF-8 -*-
+
+#Generate a tar file with all files changed between branchs
+
+source gitutil_common.sh
+
+#Unique identifier
+NOW=$(date +%Y%m%d-%M)
+#Current directory
+ARCHIVE_NAME=$(basename $(pwd))
+
+#Destination path 
+DEST_PATH=${2:-"../"}
+DEST_PATH=`realpath $DEST_PATH`
+DEST_PATH="$DEST_PATH/"
+#Check if is a git directory
+check_git_dir
+
+
+DEST_BRANCH=$(git rev-parse --abbrev-ref --symbolic-full-name @{u})
+#Diff command
+GIT_DIFF_COMMAND="$DEST_BRANCH..HEAD"
+echo "Building not pushed to $DEST_BRANCH changes archive..."
+FILE_PREFIX="$DEST_PATH$ARCHIVE_NAME-not-pushed"
+#Check that the destination file not exists
+DEST="$FILE_PREFIX-patch_$NOW.tar.gz";
+DEST_LOG="$FILE_PREFIX-files_$NOW.txt";
+COUNT=0
+#While exists increase the counter file
+while [ -e $DEST ]; do
+  let COUNT=COUNT+1	
+  DEST="$FILE_PREFIX-patch_$NOW.$COUNT.tar.gz";
+  DEST_LOG="$FILE_PREFIX-files_$NOW.$COUNT.txt";
+done
+#Check if the branches has changes
+DIFF=`git diff --name-status "$GIT_DIFF_COMMAND"`
+if [ -z "${DIFF##*( )}" ]; then
+    echo "No changes pending to push to $DEST_BRANCH"
+    exit -1
+fi
+#Make the diff text file
+git diff --name-status "$GIT_DIFF_COMMAND" > "$DEST_LOG"
+#Make the changes archive. Ignore the D lines, they are deleted and not exists
+tar -czf $DEST `git diff --name-status "$GIT_DIFF_COMMAND" |  awk '\$1 !~ /D/ {\$1 = "";sub(/^[ \t\r\n]+/, "", \$0); print \$0 }'`	
+FULL_PATH=`realpath $DEST`
+echo "Changes archive created: $FULL_PATH"
+exit 0
+
