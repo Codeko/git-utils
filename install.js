@@ -6,7 +6,7 @@ var script = path.resolve(__dirname) + '/';
 script = 'install.sh';
 execFile(script, function(err, out, stderr) {
 	if (err !== null)
-	  throw err;
-	 process.stderr.write(stderr);
-	 process.stdout.write(out); 
+	  console.log(err);
+	  process.stderr.write(stderr);
+	  process.stdout.write(out); 
 	});
