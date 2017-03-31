@@ -4,7 +4,7 @@
   "description": "A set of Git scripts to help developing and deploying.",
   "main": "index.js",
   "scripts": {
-    "install": "node install.js"
+    "install": "install.js"
   },
   "repository": {
     "type": "git",
