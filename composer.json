@@ -8,5 +8,9 @@
     "repository": {
     "url": "git+https://github.com/oscar-87/git-utils.git",
     "type": "git"
+  },
+  "dependencies": {
+    "fs-extra": "",
+    "homedir": ""
   }
 }
