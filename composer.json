@@ -1,0 +1,12 @@
+
+{
+  "name": "git-utils",
+  "version": "1.0.16",
+  "scripts": {
+    "install": "node install.js"
+  }, 
+    "repository": {
+    "url": "git+https://github.com/oscar-87/git-utils.git",
+    "type": "git"
+  }
+}
