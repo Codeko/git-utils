@@ -21,4 +21,4 @@ done
 
 echo "Pull all finished"
 
-exit 0
+exit 0source ~/git-utils/bin/git-pullall

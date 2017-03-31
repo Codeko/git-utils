@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo "source ~/bin/git-changesarchive" >>~/bin/changesarchive
-echo "source ~/bin/git-diffarchive" >>~/bin/git-diffarchive
-echo "source ~/bin/git-pullall" >>~/bin/git-pullall
-echo "source ~/bin/git-pushall" >>~/bin/git-pushall
-echo "source ~/bin/git-updateall" >>~/bin/git-updateall
-echo "source ~/bin/gitutil_common.sh" >>~/bin/gitutil_common.sh
+echo "source ~/git-utils/bingit-changesarchive" >>~/git-utils/binchangesarchive
+echo "source ~/git-utils/bin/git-diffarchive" >>~/git-utils/bin/git-diffarchive
+echo "source ~/git-utils/bin/git-pullall" >>~/git-utils/bin/git-pullall
+echo "source ~/git-utils//bin/git-pushall" >>~/git-utils/bin/git-pushall
+echo "source ~/git-utils/bin/git-updateall" >>~/git-utils/bin/git-updateall
+echo "source ~/git-utils/bin/gitutil_common.sh" >>~/git-utils/bin/gitutil_common.sh

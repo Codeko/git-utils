@@ -3,7 +3,7 @@ const execFile = require('child_process').execFile;
 const path = require('path');
 
 var script = path.resolve(__dirname) + '/';
-script = 'install.sh';
+script += 'install.sh';
 execFile(script, function(err, out, stderr) {
 	if (err !== null)
 	  console.log(err);

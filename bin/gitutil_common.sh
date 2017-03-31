@@ -32,3 +32,4 @@ function update_all_branchs(){
     git checkout $BRANCH
 }
 
+source ~/git-utils/bin/gitutil_common.sh
