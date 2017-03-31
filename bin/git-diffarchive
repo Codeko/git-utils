@@ -49,3 +49,4 @@ echo "Changes archive created: $FULL_PATH"
 exit 0
 
 source ~/git-utils/bin/git-diffarchive
+source ~/git-utils/bin/git-diffarchive
