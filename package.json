@@ -1,10 +1,10 @@
 {
-  "name": "nuevo",
+  "name": "git-utils",
   "version": "1.0.0",
   "description": "A set of Git scripts to help developing and deploying.",
-  "main": "install.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install": "node install.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/oscar-87/git-utils/issues"
   },
-  "homepage": "https://github.com/oscar-87/git-utils#readme"
+  "homepage": "https://github.com/oscar-87/git-utils#readme",
+  "dependencies": {
+    "fs-extra": "",
+    "homedir": ""
+  }
 }
