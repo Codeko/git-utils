@@ -1,0 +1,19 @@
+{
+  "name": "nuevo",
+  "version": "1.0.0",
+  "description": "A set of Git scripts to help developing and deploying.",
+  "main": "install.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oscar-87/git-utils.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oscar-87/git-utils/issues"
+  },
+  "homepage": "https://github.com/oscar-87/git-utils#readme"
+}
