@@ -12,5 +12,15 @@
   "dependencies": {
     "fs-extra": "",
     "homedir": ""
-  }
+  },
+    "require": {
+        "php": ">=5.3",
+        "composer-plugin-api": "^1"
+    },
+    "require-dev": {
+        "composer/composer": "dev-master",
+        "eloquent/phony": "^0.8",
+        "icecave/archer": "dev-develop",
+        "phpunit/phpunit": "^4"
+    }
 }
