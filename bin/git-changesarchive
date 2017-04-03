@@ -67,3 +67,4 @@ Building changes archive for uncommited changes...
 No changes detected between branches
 source ~/git-utils/bin/git-changesarchive
 source ~/git-utils/bin/git-changesarchive
+source ~/git-utils/bin/git-changesarchive
