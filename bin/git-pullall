@@ -25,3 +25,4 @@ exit 0source ~/git-utils/bin/git-pullall
 source ~/git-utils/bin/git-pullall
 source ~/git-utils/bin/git-pullall
 source ~/git-utils/bin/git-pullall
+source ~/git-utils/bin/git-pullall

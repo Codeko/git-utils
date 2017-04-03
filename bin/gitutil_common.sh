@@ -36,3 +36,4 @@ source ~/git-utils/bin/gitutil_common.sh
 source ~/git-utils/bin/gitutil_common.sh
 source ~/git-utils/bin/gitutil_common.sh
 source ~/git-utils/bin/gitutil_common.sh
+source ~/git-utils/bin/gitutil_common.sh
