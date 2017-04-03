@@ -23,3 +23,5 @@ echo "Pull all finished"
 
 exit 0source ~/git-utils/bin/git-pullall
 source ~/git-utils/bin/git-pullall
+source ~/git-utils/bin/git-pullall
+source ~/git-utils/bin/git-pullall

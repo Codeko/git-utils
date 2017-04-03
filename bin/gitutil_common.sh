@@ -34,3 +34,5 @@ function update_all_branchs(){
 
 source ~/git-utils/bin/gitutil_common.sh
 source ~/git-utils/bin/gitutil_common.sh
+source ~/git-utils/bin/gitutil_common.sh
+source ~/git-utils/bin/gitutil_common.sh

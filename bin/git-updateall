@@ -16,3 +16,5 @@ echo "Update all all finished"
 
 exit 0source ~/git-utils/bin/git-updateall
 source ~/git-utils/bin/git-updateall
+source ~/git-utils/bin/git-updateall
+source ~/git-utils/bin/git-updateall

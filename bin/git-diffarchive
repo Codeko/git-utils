@@ -50,3 +50,5 @@ exit 0
 
 source ~/git-utils/bin/git-diffarchive
 source ~/git-utils/bin/git-diffarchive
+source ~/git-utils/bin/git-diffarchive
+source ~/git-utils/bin/git-diffarchive

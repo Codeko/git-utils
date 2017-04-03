@@ -1,1 +1,5 @@
 source ~/git-utils/bingit-changesarchive
+source ~/git-utils/bingit-changesarchive
+source ~/git-utils/bingit-changesarchive
+Building changes archive for uncommited changes...
+Changes archive created: /home/oscar/git-utils-20170403-27-patch.tar.gz
