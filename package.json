@@ -4,6 +4,7 @@
   "description": "A set of Git scripts to help developing and deploying.",
   "main": "index.js",
   "scripts": {
+    "install": "node install.js",
     "postinstall": "node install.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
