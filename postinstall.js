@@ -8,4 +8,5 @@ execFile(script, function(err, out, stderr) {
 	if (err !== null)
 	  console.log(err);
 	  process.stderr.write(stderr);
-	  process.stdout.write(out); 
+	  process.stdout.write(out);
+});
