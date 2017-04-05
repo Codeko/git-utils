@@ -1,3 +1,3 @@
 #!/bin/bash
 cd ..
-mv git-utils ..
+sudo mv git-utils ..
