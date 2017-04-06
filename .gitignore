@@ -2,4 +2,5 @@ vendor/
 composer.bat
 conposer.lock
 composer.phar
+composer.json
 utils.js
