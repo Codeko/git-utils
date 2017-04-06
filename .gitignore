@@ -1,1 +1,5 @@
 vendor/
+composer.bat
+conposer.lock
+composer.phar
+utils.js

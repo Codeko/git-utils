@@ -1,4 +1,3 @@
-const utils = require('./utils');
 const execFile = require('child_process').execFile;
 const path = require('path');
 
