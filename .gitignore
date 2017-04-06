@@ -1,6 +1,6 @@
 vendor/
 composer.bat
-conposer.lock
+composer.lock
 composer.phar
 composer.json
 utils.js
