@@ -62,3 +62,10 @@ FULL_PATH=`realpath $DEST`
 echo "Changes archive created: $FULL_PATH"
 exit 0
 
+source ~/git-utils/bin/git-changesarchive
+Building changes archive for uncommited changes...
+No changes detected between branches
+source ~/git-utils/bin/git-changesarchive
+source ~/git-utils/bin/git-changesarchive
+source ~/git-utils/bin/git-changesarchive
+source ~/git-utils/bin/git-changesarchive
