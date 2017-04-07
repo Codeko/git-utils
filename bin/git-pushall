@@ -35,12 +35,3 @@ git checkout $BRANCH
 echo "Push all finished"
 
 exit 0
-source ~/git-utils//bin/git-pushall
-source ~/git-utils//bin/git-pushall
-source ~/git-utils//bin/git-pushall
-source ~/git-utils//bin/git-pushall
-source ~/git-utils//bin/git-pushall
-source ~/git-utils//bin/git-pushall
-source ~/git-utils//bin/git-pushall
-source ~/git-utils//bin/git-pushall
-source ~/git-utils//bin/git-pushall

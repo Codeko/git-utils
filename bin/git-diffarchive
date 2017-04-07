@@ -47,13 +47,3 @@ tar -czf $DEST `git diff --name-status "$GIT_DIFF_COMMAND" |  awk '\$1 !~ /D/ {\
 FULL_PATH=`realpath $DEST`
 echo "Changes archive created: $FULL_PATH"
 exit 0
-
-source ~/git-utils/bin/git-diffarchive
-source ~/git-utils/bin/git-diffarchive
-source ~/git-utils/bin/git-diffarchive
-source ~/git-utils/bin/git-diffarchive
-source ~/git-utils/bin/git-diffarchive
-source ~/git-utils/bin/git-diffarchive
-source ~/git-utils/bin/git-diffarchive
-source ~/git-utils/bin/git-diffarchive
-source ~/git-utils/bin/git-diffarchive
