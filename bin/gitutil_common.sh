@@ -31,4 +31,3 @@ function update_all_branchs(){
     
     git checkout $BRANCH
 }
-

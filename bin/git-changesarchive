@@ -61,4 +61,3 @@ fi
 FULL_PATH=`realpath $DEST`
 echo "Changes archive created: $FULL_PATH"
 exit 0
-
