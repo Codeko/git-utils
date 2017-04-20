@@ -206,25 +206,37 @@ _git_branch ()
 		;;
 	esac
 }
-_git_changesarchive()
+__git_complete ()
 {
-   _git_branch
+	local wrapper="__git_wrap${2}"
+	eval "$wrapper () { __git_func_wrap $2 ; }"
+	complete -o bashdefault -o default -o nospace -F $wrapper $1 2>/dev/null \
+		|| complete -o default -o nospace -F $wrapper $1
 }
+_ptid_git_complete_()
+{
+  local line="${COMP_LINE}"                   # the entire line that is being completed
+
+  # check that the commit option was passed to git 
+  if [[ "$line" == "git commit " ]]; then 
+    # get the PivotalTracker Id from the branch name
+    ptid=`git branch | grep -e "^\*" | sed 's/^\* //g' | sed 's/\-/ /g' | awk '{ print $(NF) }'`
+    nodigits=$(echo $ptid | sed 's/[[:digit:]]//g')
+
+    if [ ! -z $nodigits ]; then
+      : # do nothing
+    else
+      COMPREPLY=("-m \"[#$ptid]")
+    fi
+  else
+    __git_main
+  fi
+}	
 _git_diffarchive() 
 {
     _git_branch
 }
-_git_pullall() 
-{
-    _git_branch
-}
-
 _git_pushall() 
 {
     _git_branch
 }
-_git_updateall() 
-{
-    _git_branch
-}
-

@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oscar-87/git-utils.git"
+    "url": "git+https://github.com/Codeko/git-utils.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/oscar-87/git-utils/issues"
+    "url": "https://github.com/Codeko/git-utils/issues"
   },
-  "homepage": "https://github.com/oscar-87/git-utils#readme",
+  "homepage": "https://github.com/Codeko/git-utils#readme",
   "dependencies": {
     "fs-extra": "",
     "homedir": ""
