@@ -10,7 +10,11 @@ If don't work do the following edit the .bashrc file and check it has the line:
 ## Dependencies
 The scripts require the following packages:
 
-    realpath -> Linux package that is installed with the command apt-get install realpath
+    realpath 
+
+You can install it with your system package manager. For example in Debian:
+
+    sudo apt-get install realpath
 
 ## Available commands
 ### diffarchive
