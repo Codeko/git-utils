@@ -16,6 +16,8 @@ You can install it with your system package manager. For example in Debian:
 
     sudo apt-get install realpath
 
+realpath -> Linux package that is installed with the command apt-get install realpath
+
 ## Available commands
 ### diffarchive
 
