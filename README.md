@@ -19,13 +19,7 @@ The scripts require the following packages:
 
 You can install it with your system package manager. For example in Debian:  
 
-    sudo apt-get install realpath  
-
-The scripts require the following packages:  
-
-    realpath -> Linux package that is installed with the command apt-get install realpath
-
-realpath -> Linux package that is installed with the command apt-get install realpath
+    sudo apt-get install realpath
 
 ## Available commands
 ### diffarchive
