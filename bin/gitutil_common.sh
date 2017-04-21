@@ -31,3 +31,13 @@ function update_all_branchs(){
     
     git checkout $BRANCH
 }
+
+function load_configure_file(){
+  git config include.path ../.gitconfig
+}
+
+exitInclude=$(grep -e 'path = ../.gitconfig' .git/config|wc -l)
+
+if [ $exitInclude -eq 0 ]; then
+    load_configure_file
+fi

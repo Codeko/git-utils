@@ -10,17 +10,15 @@ If don't work do the following edit the .bashrc file and check it has the line:
 ## Dependencies
 The scripts require the following packages:
 
-    realpath 
-
-You can install it with your system package manager. For example in Debian:
-
-    sudo apt-get install realpath
+    realpath -> Linux package that is installed with the command apt-get install realpath
 
 ## Available commands
 ### diffarchive
 
 #### Description
 Generates a tar.gz with all changed files between current branch and destination branch. Before doing the file it updates all branches from origin.
+Create configure file for Git -> git config - f fileName level1.level2.levelN value
+Include configure file in local config of Git -> git config include.path filePath(if it is in the file path then filePath=../fileName)
 
 #### Parameters
 
