@@ -11,7 +11,7 @@ check_git_dir
 
 #Destination branches
 if [ $# -eq 0 ]; then
-    BRANCHS_TO_PULL=$(git branch | grep -n "*"|cut -d "*" -f 2|tr -d '[[:space:]]')
+    BRANCHS_TO_PUSH="dev master"
 else
     BRANCHS_TO_PULL="$*"
 fi
