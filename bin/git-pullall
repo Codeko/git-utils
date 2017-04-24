@@ -22,11 +22,10 @@ git remote update --prune
 
 #Pull from all remote branches
 for brname in `git branch -r  | grep -v HEAD `; do
-    echo "Pulling from ${brname/\// }..."
     CBRANCH=`echo $brname | sed -e 's/.*\///g'`
     for i in $BRANCHS_TO_PULL; do
         if [ "$CBRANCH" == "$i" ]; then
-            echo "Push to ${brname/\// }..."
+            echo "Pulling from ${brname/\// }..."
 	    git checkout $CBRANCH
 	    git pull ${brname/\// } 
         fi
