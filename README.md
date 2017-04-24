@@ -65,9 +65,16 @@ This command is usefull to update the entire local repository from the remote re
 #### Description
 Pull all remote branches to the current one.
 
+#### Parameters
+
+    git pullall [destination branch]  
+`[origin branch]` pull all the branches remotes to the current branch. By default are all branches  
+
 #### Example
 
-    $> git pullall
+    $> git pullall  
+
+    $> git pullall my_branch my other_branch  
 
 #### Use 
 This command is usefull when working with many developers in the same proyect with hight posibilities of collisions. A updated branch is very important in this cases.

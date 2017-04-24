@@ -11,7 +11,9 @@ check_git_dir
 
 #Destination branches
 if [ $# -eq 0 ]; then
-    BRANCHS_TO_PUSH="dev master"
+    for i in `git branch -r| grep -v HEAD|cut -d "/" -f 2`; do
+         BRANCHS_TO_PULL+="$i "
+    done
 else
     BRANCHS_TO_PULL="$*"
 fi
