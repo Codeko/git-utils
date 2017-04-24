@@ -67,7 +67,7 @@ Pull all remote branches to the current one.
 
 #### Parameters
 
-    git pullall [destination branch]  
+    git pullall [origin branch]  
 `[origin branch]` pull all the branches remotes to the current branch. By default are all branches  
 
 #### Example
