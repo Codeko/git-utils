@@ -11,9 +11,7 @@ check_git_dir
 
 #Destination branches
 if [ $# -eq 0 ]; then
-    for i in `git branch -r| grep -v HEAD|cut -d "/" -f 2`; do
-         BRANCHS_TO_PULL+="$i "
-    done
+    option_default "pullall"
 else
     BRANCHS_TO_PULL="$*"
 fi

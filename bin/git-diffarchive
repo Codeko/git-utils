@@ -10,10 +10,14 @@ NOW=$(date +%Y%m%d-%M)
 #Current directory
 ARCHIVE_NAME=$(basename $(pwd))
 
-#Destination path 
-DEST_PATH=${2:-"../"}
-DEST_PATH=`realpath $DEST_PATH`
-DEST_PATH="$DEST_PATH/"
+#Destination path
+if [ $# -eq 0 ]; then
+    DEST_PATH=$(load_route "diffarchive")
+else
+    DEST_PATH=${2:-"../"}
+    DEST_PATH=`realpath $DEST_PATH`
+    DEST_PATH="$DEST_PATH/"
+fi
 #Check if is a git directory
 check_git_dir
 

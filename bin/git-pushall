@@ -11,11 +11,10 @@ check_git_dir
 
 #Destination branches
 if [ $# -eq 0 ]; then
-    BRANCHS_TO_PUSH="dev master"
+    option_default "pushall"
 else
     BRANCHS_TO_PUSH="$*"
 fi
-
 echo "Push to '$BRANCHS_TO_PUSH' from $BRANCH"
 #Push to designed branchs in all origins
 for brname in `git branch -r  | grep -v HEAD `; do

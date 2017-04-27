@@ -10,8 +10,11 @@ source gitutil_common.sh
 check_git_dir
 
 #Update all branchs from origin
-update_all_branchs
-
+if [ $# -eq 0 ]; then
+    option_default "updateall"
+else
+    update_all_branchs
+fi
 echo "Update all all finished"
 
 exit 0
