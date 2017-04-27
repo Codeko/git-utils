@@ -36,7 +36,7 @@ function load_gitconfig(){
   git config include.path ../.gitconfig
 }
 function load_route(){
-	echo $(git config --get $1.ruta)
+	echo $(git config --get $1.route)
 }
 function update_branchs(){
    if [ "$1" = "pullall" ] || [ "updateall" ]; then
@@ -69,8 +69,8 @@ function update_branchs(){
 
 function load_white_list(){
   branchs=""
-  if [ $(git config --get $1.lista.blanca)!="" ]; then
-    branchs=$(git config --get $1.lista.blanca)
+  if [ $(git config --get $1.list.white)!="" ]; then
+    branchs=$(git config --get $1.list.white)
   fi
   echo $branchs
 
@@ -78,8 +78,8 @@ function load_white_list(){
 
 function load_black_list(){
   branchs=""
-  if [ $(git config --get $1.lista.negra)!="" ]; then
-    branchs=$(git config --get $1.lista.negra)
+  if [ $(git config --get $1.list.black)!="" ]; then
+    branchs=$(git config --get $1.list.black)
   fi
   echo $branchs
 

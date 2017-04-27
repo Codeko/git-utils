@@ -3,8 +3,17 @@ A set of Git scripts to help developing and deploying.
 
 ## Configuration
 
-Create configure file for Git -> git config - f fileName level1.level2.levelN value  
-Include configure file in local config of Git -> git config include.path filePath(if it is in the file path then filePath=../fileName)
+Create configure file for Git  
+
+    git config - f [fileName] [level1.level2.levelN] [value]  
+
+Include configure file in local config of Git  
+
+    git config include.path filePath(if it is in the file path then filePath=../fileName)  
+
+You can set default routes  
+
+Some commands contain black and white lists or a default option for branches  
 
 ## Installation
 Copy the bin folder to your home directory or the contents to any folder in PATH.
@@ -25,9 +34,11 @@ You can install it with your system package manager. For example in Debian:
 ### diffarchive
 
 #### Description
-Generates a tar.gz with all changed files between current branch and destination branch. Before doing the file it updates all branches from origin.
-Create configure file for Git -> git config - f fileName level1.level2.levelN value
-Include configure file in local config of Git -> git config include.path filePath(if it is in the file path then filePath=../fileName)
+Generates a tar.gz with all changed files between current branch and destination branch. Before doing the file it updates all branches from origin.  
+
+#### Configure route
+
+     git config diffarchive.route [route]
 
 #### Parameters
 
@@ -52,7 +63,15 @@ The command is usefull to gather all files needed to be uploaded to a remote ser
 
 ### updateall
 #### Description
-Fast forward every branch to be updated from their remote
+Fast forward every branch to be updated from their remote  
+
+#### Configure lists
+
+     git config updateall.list.black/white branch1,branch2,branchN  
+
+#### Configure branches default
+
+     git config updateall.default branch1,branch2,branchN  
 
 #### Example
 
@@ -63,7 +82,15 @@ This command is usefull to update the entire local repository from the remote re
 
 ### pullall
 #### Description
-Pull all remote branches to the current one.
+Pull all remote branches to the current one.  
+
+#### Configure lists
+
+     git config pullall.list.black/white branch1,branch2,branchN  
+
+#### Configure branches default
+
+     git config pullall.default branch1,branch2,branchN  
 
 #### Parameters
 
@@ -84,6 +111,14 @@ This command is usefull to update your branch before a deploy using the `diffarc
 ### pushall
 #### Description
 Push current branch to designed branchs in all origins
+
+#### Configure lists
+
+     git config pushall.list.black/white branch1,branch2,branchN  
+
+#### Configure branches default
+
+     git config pushall.default branch1,branch2,branchN  
 
 #### Parameters
 
@@ -107,6 +142,10 @@ This command is usefull to push your changes to multiple origins or/and to multi
 ### changesarchive
 #### Description
 Create a tar file with all the files changed but not commited in the current branch or for a commit id.
+
+#### Configure route
+
+     git config changesarchive.route [route]
 
 #### Parameters
 
