@@ -146,9 +146,6 @@ function option_default(){
 	     done
 
 	fi
-	#echo ${white[@]}
-	#echo ${black[@]}
-	#echo ${list_def[@]}
 	update_branchs $1 ${list_def[@]}
 	exit 1
    else
