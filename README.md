@@ -15,6 +15,11 @@ You can set default routes
 
 Some commands contain black and white lists or a default option for branches  
 
+Configure list black and white the remotes  
+    
+    git config remotes.list.white remote1,remote2,remoteN  
+    git config remotes.list.black remote1,remote2,remoteN  
+
 ## Installation
 Copy the bin folder to your home directory or the contents to any folder in PATH.
 If don't work do the following edit the .bashrc file and check it has the line: 
