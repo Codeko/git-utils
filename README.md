@@ -1,6 +1,25 @@
 # git-utils
 A set of Git scripts to help developing and deploying.
 
+## Configuration
+
+Create configure file for Git  
+
+    git config - f [fileName] [level1.level2.levelN] [value]  
+
+Include configure file in local config of Git  
+
+    git config include.path filePath(if it is in the file path then filePath=../fileName)  
+
+You can set default routes  
+
+Some commands contain black and white lists or a default option for branches  
+
+Configure list black and white the remotes  
+    
+    git config remotes.list.white remote1,remote2,remoteN  
+    git config remotes.list.black remote1,remote2,remoteN  
+
 ## Installation
 Copy the bin folder to your home directory or the contents to any folder in PATH.
 If don't work do the following edit the .bashrc file and check it has the line: 
@@ -8,19 +27,53 @@ If don't work do the following edit the .bashrc file and check it has the line:
     PATH=$PATH:$HOME/bin
 
 ## Dependencies
-The scripts require the following packages:
+The scripts require the following packages:  
 
     realpath 
 
-You can install it with your system package manager. For example in Debian:
+You can install it with your system package manager. For example in Debian:  
 
     sudo apt-get install realpath
 
+## Installation Debian package  
+Execute:
+
+    ./crearDeb.sh  
+    
+    sudo dpkg -i gitUtils.deb  
+
 ## Available commands
+
+### pusharchive  
+
+#### Description  
+
+Generates a file that shows the pending confirmation files of the current branch and a tar.gz that contains those files  
+
+#### Example  
+
+    git pusharchive  
+    
+#### Use
+
+The command must be executed in the root of the git repository. The file is generated in the parent directory with the name:
+
+[repository_name]-not-pushed-patch_[date].tar.gz
+
+Another file with the list of changes is also generated with the name: 
+
+[repository_name]-not-pushed-files_[date].txt
+
+This command is useful for viewing the current modified files affected by prepared commits
+
 ### diffarchive
 
 #### Description
-Generates a tar.gz with all changed files between current branch and destination branch. Before doing the file it updates all branches from origin.
+Generates a tar.gz with all changed files between current branch and destination branch. Before doing the file it updates all branches from origin.  
+
+#### Configure route
+
+     git config diffarchive.route [route]
 
 #### Parameters
 
@@ -45,7 +98,15 @@ The command is usefull to gather all files needed to be uploaded to a remote ser
 
 ### updateall
 #### Description
-Fast forward every branch to be updated from their remote
+Fast forward every branch to be updated from their remote  
+
+#### Configure lists
+
+     git config updateall.list.black/white branch1,branch2,branchN  
+
+#### Configure branches default
+
+     git config updateall.default branch1,branch2,branchN  
 
 #### Example
 
@@ -56,11 +117,26 @@ This command is usefull to update the entire local repository from the remote re
 
 ### pullall
 #### Description
-Pull all remote branches to the current one.
+Pull all remote branches to the current one.  
+
+#### Configure lists
+
+     git config pullall.list.black/white branch1,branch2,branchN  
+
+#### Configure branches default
+
+     git config pullall.default branch1,branch2,branchN  
+
+#### Parameters
+
+    git pullall [origin branch]  
+`[origin branch]` pull all the branches remotes to the current branch. By default are all branches  
 
 #### Example
 
-    $> git pullall
+    $> git pullall  
+
+    $> git pullall my_branch my other_branch  
 
 #### Use 
 This command is usefull when working with many developers in the same proyect with hight posibilities of collisions. A updated branch is very important in this cases.
@@ -70,6 +146,14 @@ This command is usefull to update your branch before a deploy using the `diffarc
 ### pushall
 #### Description
 Push current branch to designed branchs in all origins
+
+#### Configure lists
+
+     git config pushall.list.black/white branch1,branch2,branchN  
+
+#### Configure branches default
+
+     git config pushall.default branch1,branch2,branchN  
 
 #### Parameters
 
@@ -94,6 +178,10 @@ This command is usefull to push your changes to multiple origins or/and to multi
 #### Description
 Create a tar file with all the files changed but not commited in the current branch or for a commit id.
 
+#### Configure route
+
+     git config changesarchive.route [route]
+
 #### Parameters
 
     git changesarchive [commit id]
@@ -112,6 +200,3 @@ Generate a file with all files changed in a commit
 
 #### Use 
 This command is usefull to get the current changed files or the files affected by a commit.
-
-
-

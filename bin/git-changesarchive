@@ -14,9 +14,13 @@ ARCHIVE_NAME=$(basename $(pwd))
 COMMIT_ID=${1:-""}
 
 #Destination path 
-DEST_PATH=${2:-"../"}
-DEST_PATH=`realpath $DEST_PATH`
-DEST_PATH="$DEST_PATH/"
+if [ $# -eq 0 ]; then
+    DEST_PATH=$(load_route "changesarchive")
+else
+    DEST_PATH=${2:-"../"}
+    DEST_PATH=`realpath $DEST_PATH`
+    DEST_PATH="$DEST_PATH/"
+fi
 #Check if is a git directory
 check_git_dir
 
@@ -61,4 +65,3 @@ fi
 FULL_PATH=`realpath $DEST`
 echo "Changes archive created: $FULL_PATH"
 exit 0
-

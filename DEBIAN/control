@@ -1,0 +1,9 @@
+Package: gitUtils
+Version: 0.1
+Architecture: all
+Maintainer: Codeko
+Installed-Size: 84
+Depends: realpath, bash
+Section: xll
+Priority: optional
+Description: Comandos para GIT.

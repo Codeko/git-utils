@@ -10,24 +10,19 @@ NOW=$(date +%Y%m%d-%M)
 #Current directory
 ARCHIVE_NAME=$(basename $(pwd))
 
-#Destination path
-if [ $# -eq 0 ]; then
-    DEST_PATH=$(load_route "diffarchive")
-else
-    DEST_PATH=${2:-"../"}
-    DEST_PATH=`realpath $DEST_PATH`
-    DEST_PATH="$DEST_PATH/"
-fi
+#Destination path 
+DEST_PATH=${2:-"../"}
+DEST_PATH=`realpath $DEST_PATH`
+DEST_PATH="$DEST_PATH/"
 #Check if is a git directory
 check_git_dir
 
-#Update all branchs from origin
-update_all_branchs
-DEST_BRANCH=${1:-"master"}
+
+DEST_BRANCH=$(git rev-parse --abbrev-ref --symbolic-full-name @{u})
 #Diff command
-GIT_DIFF_COMMAND="$DEST_BRANCH..$BRANCH"
-echo "Building changes archive from $BRANCH to $DEST_BRANCH..."
-FILE_PREFIX="$DEST_PATH$ARCHIVE_NAME-$DEST_BRANCH-$BRANCH"
+GIT_DIFF_COMMAND="$DEST_BRANCH..HEAD"
+echo "Building not pushed to $DEST_BRANCH changes archive..."
+FILE_PREFIX="$DEST_PATH$ARCHIVE_NAME-not-pushed"
 #Check that the destination file not exists
 DEST="$FILE_PREFIX-patch_$NOW.tar.gz";
 DEST_LOG="$FILE_PREFIX-files_$NOW.txt";
@@ -41,7 +36,7 @@ done
 #Check if the branches has changes
 DIFF=`git diff --name-status "$GIT_DIFF_COMMAND"`
 if [ -z "${DIFF##*( )}" ]; then
-    echo "No changes detected between branches"
+    echo "No changes pending to push to $DEST_BRANCH"
     exit -1
 fi
 #Make the diff text file
@@ -51,3 +46,4 @@ tar -czf $DEST `git diff --name-status "$GIT_DIFF_COMMAND" |  awk '\$1 !~ /D/ {\
 FULL_PATH=`realpath $DEST`
 echo "Changes archive created: $FULL_PATH"
 exit 0
+

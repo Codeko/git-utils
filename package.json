@@ -1,0 +1,24 @@
+{
+  "name": "git-utils",
+  "version": "1.0.0",
+  "description": "A set of Git scripts to help developing and deploying.",
+  "main": "index.js",
+  "scripts": {
+    "install": "node install.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codeko/git-utils.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Codeko/git-utils/issues"
+  },
+  "homepage": "https://github.com/Codeko/git-utils#readme",
+  "dependencies": {
+    "fs-extra": "",
+    "homedir": ""
+  }
+}
