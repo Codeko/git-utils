@@ -35,7 +35,37 @@ You can install it with your system package manager. For example in Debian:
 
     sudo apt-get install realpath
 
+## Installation Debian package  
+Execute:
+
+    ./crearDeb.sh  
+    
+    sudo dpkg -i gitUtils.deb  
+
 ## Available commands
+
+### pusharchive  
+
+#### Description  
+
+Generates a file that shows the pending confirmation files of the current branch and a tar.gz that contains those files  
+
+#### Example  
+
+    git pusharchive  
+    
+#### Use
+
+The command must be executed in the root of the git repository. The file is generated in the parent directory with the name:
+
+[repository_name]-not-pushed-patch_[date].tar.gz
+
+Another file with the list of changes is also generated with the name: 
+
+[repository_name]-not-pushed-files_[date].txt
+
+This command is useful for viewing the current modified files affected by prepared commits
+
 ### diffarchive
 
 #### Description
@@ -170,6 +200,3 @@ Generate a file with all files changed in a commit
 
 #### Use 
 This command is usefull to get the current changed files or the files affected by a commit.
-
-
-

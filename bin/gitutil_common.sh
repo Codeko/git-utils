@@ -259,12 +259,3 @@ function option_default(){
 	exit 0
    fi
 }
-
-
-
-includePathGitconfig=$(git config include.path)
-
-if [ "$includePathGitconfig" = "" ]; then
-    load_configure_file
-fi
-
